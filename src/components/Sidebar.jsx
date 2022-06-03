@@ -5,18 +5,16 @@ import { MdOutlineCancel } from "react-icons/md";
 import { TooltipComponent } from "@syncfusion/ej2-react-popups";
 
 import { links } from "../data/dummy";
-// import { useStateContext } from "../contexts/ContextProvider";
+import { useStateContext } from "../contexts/contextProvider";
 
 const Sidebar = () => {
-  // const { currentColor, activeMenu, setActiveMenu, screenSize } =
-  //   useStateContext();
+  const { activeMenu, setActiveMenu } = useStateContext();
 
   // const handleCloseSideBar = () => {
   //   if (activeMenu !== undefined && screenSize <= 900) {
   //     setActiveMenu(false);
   //   }
   // };
-  const activeMenu = true;
 
   const activeLink =
     "flex items-center gap-5 pl-4 pt-3 pb-2.5 rounded-lg  text-white  text-md m-2";
@@ -31,6 +29,7 @@ const Sidebar = () => {
             <Link
               to="/"
               className="items-center gap-3 ml-3 mt-4 flex text-xl font-extrabold tracking-tight dark:text-white text-slate-900"
+              onClick={() => setActiveMenu(false)}
             >
               <SiShopware /> <span>Shoppy</span>
             </Link>
@@ -38,6 +37,7 @@ const Sidebar = () => {
               <button
                 type="button"
                 className="text-xl rounded-full p-3 hover:bg-light-gray mt-4 block md:hidden"
+                onClick={() => setActiveMenu((prevAciveMenu) => !prevAciveMenu)}
               >
                 <MdOutlineCancel />
               </button>
